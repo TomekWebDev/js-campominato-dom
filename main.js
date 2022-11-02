@@ -5,6 +5,8 @@ function startPlay(){
     //variabile per collegare il contenitore principale ai singoli div
     let gridContainer = document.getElementById("grid-container")
 
+    gridContainer.innerHTML = "";
+
     let bombsArray = [] //creazione dell'array in cui vengono create le 16 bombe random
 
     let bombsCheck = 0 //contatore creato in fase di sviluppo per controllare che vengano prodotte tutte le 16 bombe alla fine di tutti i cicli (uniche)
@@ -39,7 +41,6 @@ function startPlay(){
             cell.classList.add("medium-cell"); 
         } else {
             cell.classList.add("hard-cell");
-
         }
             cell.classList.add("cell", "border", "border-1", "border-dark", "d-flex", "justify-content-center", "align-items-center", "p-0", 'text-lg')
 
@@ -58,6 +59,8 @@ function startPlay(){
             return cell;
     }
 
+    if (safeNumbersToggled)
+
     for(i = 1; i <= chooseLevel; i++){
         let thisSquare = createSquare(i);
 
@@ -66,7 +69,9 @@ function startPlay(){
             thisSquare.addEventListener("click", 
             function activateSquare(){
                 console.log(this.innerText);
-                this.classList.add("boom")
+                this.classList.add("boom");
+                document.getElementById("lose").innerHTML = "You Lose :( Your score is: " + safeNumbersToggled.length
+                document.getElementById("main").classList.add("")
             })
 
         }
@@ -79,6 +84,8 @@ function startPlay(){
                 this.classList.add("safe-number")
                 safeNumbersToggled.push(this)
                 console.log(safeNumbersToggled.length);
+                document.getElementById("score").innerHTML = + safeNumbersToggled.length
+               
             })
 
         }
@@ -90,5 +97,9 @@ function startPlay(){
 
     console.log(bombsCheck);
 
+}
+
+function reset(){
+    location.reload();
 }
 

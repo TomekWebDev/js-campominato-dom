@@ -29,6 +29,7 @@
             <option value="49">Hard</option>
           </select>
         <button class="btn btn-outline-secondary btn-sm" onclick="startPlay()" >Play</button>
+        <button class="btn btn-outline-secondary btn-sm" onclick="reset()" >Reset</button>
 
     </div>
     
@@ -36,13 +37,14 @@
 
   </header>
 
-  <main class="d-flex align-items-center justify-content-center">
+  <main id="main" class="d-flex align-items-center justify-content-center flex-column">
 
-    <div id="grid-container" class="d-flex flex-wrap">
-
-      
-
+    <div
+        id="grid-container" class="d-flex flex-wrap">
     </div>
+
+    <h2 id="lose" class="my-2">Your score is: <span id="score"></span></h2>
+    <h5><span id="missingToWin"></span>x numbers to win!</h5>
     
   </main>
 
