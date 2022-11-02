@@ -75,6 +75,8 @@ function startPlay(){
                     bombs[i].classList.add('boom');
                 }
 
+                document.getElementById("resetBtn").classList.add("btn-outline-danger", "border", "border-4", "border-danger")
+
             })
 
         }
@@ -105,4 +107,5 @@ function startPlay(){
 function reset(){
     location.reload();
 }
+
 
