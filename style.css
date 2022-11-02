@@ -32,6 +32,10 @@ footer{
     cursor: pointer;
 }
 
-.active{
+.safe-number{
     background-color: rgb(0, 128, 0, 0.8);
+}
+
+.boom{
+    background-color: red;
 }

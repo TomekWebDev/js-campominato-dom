@@ -34,7 +34,8 @@ function createSquare(num){
         //all'interno del ciclo for seguente, la funzione controlla se i (il numero di "identità" del quadratino da creare)
         //è presente nell'array delle bombe, se c'è lo chiama boom, else num(parametro che verrà sostituito dalla i del ciclo seguente)
         if(bombsArray.includes(i)){
-            cell.innerText = "Boom"
+            // cell.classList.add("boom")
+            cell.innerText = "B"
             bombsCheck += 1;
         }
 
@@ -47,12 +48,35 @@ function createSquare(num){
 
 for(i = 1; i <= 100; i++){
     let thisSquare = createSquare(i);
-    thisSquare.addEventListener("click", function activateSquare(){
-    console.log(this);
-    this.classList.toggle("active")
-    })
 
-    console.log(thisSquare.innerText);
+    if(bombsArray.includes(i)){
+
+        thisSquare.addEventListener("click", 
+        function activateSquare(){
+            console.log(this.innerText);
+            this.classList.add("boom")
+        })
+
+    }
+
+    else{
+        
+        thisSquare.addEventListener("click", 
+        function activateSquare(){
+            console.log(this.innerText);
+            this.classList.add("safe-number")
+            safeNumbersToggled.push(this)
+            console.log(safeNumbersToggled.length);
+        })
+
+    }
+
+    // thisSquare.addEventListener("click", function activateSquare(){
+    // console.log(this);
+    // this.classList.toggle("active")
+    // })
+
+    console.log(thisSquare);
 
     gridContainer.append(thisSquare)
 }
