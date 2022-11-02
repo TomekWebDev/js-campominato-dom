@@ -2,8 +2,7 @@ function startPlay(){
 
     let chooseLevel = document.getElementById("level").value
 
-    //variabile per collegare il contenitore principale ai singoli div
-    let gridContainer = document.getElementById("grid-container")
+    let gridContainer = document.getElementById("grid-container") //variabile per collegare il contenitore principale ai singoli div
 
     gridContainer.innerHTML = "";
 
@@ -16,12 +15,11 @@ function startPlay(){
 
     //ciclo while per creazione bombe uniche (numeri rnd unici)
     while(bombsArray.length < 16){
-        //le bombe vengono create in un range tra 1 e il numero dei quadratini generati in base al level selezionato
-        let randomBombNumber = Math.round(Math.random()*(chooseLevel - 1)) + 1;
+        
+        let randomBombNumber = Math.round(Math.random()*(chooseLevel - 1)) + 1; //le bombe vengono create in un range tra 1 e il numero dei quadratini generati in base al level selezionato
 
         if(bombsArray.includes(randomBombNumber)){
         }
-
         else{
             bombsArray.push(randomBombNumber)
         }
@@ -47,7 +45,7 @@ function startPlay(){
             //all'interno del ciclo for seguente, la funzione controlla se i (il numero di "identità" del quadratino da creare)
             //è presente nell'array delle bombe, se c'è lo chiama boom, else num(parametro che verrà sostituito dalla i del ciclo seguente)
             if(bombsArray.includes(i)){
-                // cell.classList.add("boom")
+                cell.classList.add("bombs")
                 cell.innerText = "B"
                 bombsCheck += 1;
             }
@@ -71,7 +69,12 @@ function startPlay(){
                 console.log(this.innerText);
                 this.classList.add("boom");
                 document.getElementById("lose").innerHTML = "You Lose :( Your score is: " + safeNumbersToggled.length
-                document.getElementById("main").classList.add("")
+                
+                let bombs = document.getElementsByClassName("bombs");
+                for(i = 0; i < bombs.length; i++){
+                    bombs[i].classList.add('boom');
+                }
+
             })
 
         }
