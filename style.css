@@ -1,0 +1,37 @@
+body{
+    background-color: white!important;
+}
+
+header{
+    height: 15vh;
+
+}
+
+main{
+    height: 75vh;
+    background-color: aquamarine;
+}
+
+footer{
+    height: 10vh;
+}
+
+#grid-container{
+    width: 70vh;
+    height: 70vh;
+    background-color: bisque
+}
+
+.cell{
+    width: calc(100% / 10);
+    aspect-ratio: 1/1;
+}
+
+.cell:hover{
+    background-color: rgb(0, 0, 0, .2);
+    cursor: pointer;
+}
+
+.active{
+    background-color: rgb(0, 128, 0, 0.8);
+}
