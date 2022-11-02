@@ -22,13 +22,23 @@ footer{
     background-color: bisque
 }
 
-.cell{
+.easy-cell{
     width: calc(100% / 10);
     aspect-ratio: 1/1;
 }
 
+.medium-cell{
+    width: calc(100% / 9);
+    aspect-ratio: 1/1;
+}
+
+.hard-cell{
+    width: calc(100% / 7);
+    aspect-ratio: 1/1;
+}
+
 .cell:hover{
-    background-color: rgb(0, 0, 0, .2);
+    filter: rgb(0, 0, 0, .2);
     cursor: pointer;
 }
 
