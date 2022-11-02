@@ -15,9 +15,7 @@ function startPlay(){
 
     //ciclo while per creazione bombe uniche (numeri rnd unici)
     while(bombsArray.length < 16){
-        
         let randomBombNumber = Math.round(Math.random()*(chooseLevel - 1)) + 1; //le bombe vengono create in un range tra 1 e il numero dei quadratini generati in base al level selezionato
-
         if(bombsArray.includes(randomBombNumber)){
         }
         else{
@@ -25,16 +23,12 @@ function startPlay(){
         }
     }
 
-    //display dell'array delle bombe
-    console.log(bombsArray);
-
     //funzione per creare i singoli quadratini che possono essere bombe o numeri
     function createSquare(num){
         let cell = document.createElement("div")
 
         if (chooseLevel == 100){
             cell.classList.add("easy-cell"); 
-
         } else if (chooseLevel == 81){
             cell.classList.add("medium-cell"); 
         } else {
@@ -46,7 +40,7 @@ function startPlay(){
             //è presente nell'array delle bombe, se c'è lo chiama boom, else num (parametro che verrà sostituito dalla i del ciclo seguente)
             if(bombsArray.includes(i)){
                 cell.classList.add("bombs")
-                cell.innerText = "B" //debug per vedere sempre dove sono le bombe
+                cell.innerText = num //"B" //debug per vedere sempre dove sono le bombe
                 // bombsCheck += 1; contatore di controllo in fase di sviluppo
             }
 
