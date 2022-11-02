@@ -8,7 +8,7 @@ function startPlay(){
 
     let bombsArray = [] //creazione dell'array in cui vengono create le 16 bombe random
 
-    let bombsCheck = 0 //contatore creato in fase di sviluppo per controllare che vengano prodotte tutte le 16 bombe alla fine di tutti i cicli (uniche)
+    // let bombsCheck = 0 //contatore creato in fase di sviluppo per controllare che vengano prodotte tutte le 16 bombe alla fine di tutti i cicli (uniche)
 
     let safeNumbersToggled = [];//array in cui vengono salvati i numeri cliccati progressivamente 
                                 //(da usare per controllare quando terminare la partita se vinta, max num raggiunti)
@@ -43,11 +43,11 @@ function startPlay(){
             cell.classList.add("cell", "border", "border-1", "border-dark", "d-flex", "justify-content-center", "align-items-center", "p-0", 'text-lg')
 
             //all'interno del ciclo for seguente, la funzione controlla se i (il numero di "identità" del quadratino da creare)
-            //è presente nell'array delle bombe, se c'è lo chiama boom, else num(parametro che verrà sostituito dalla i del ciclo seguente)
+            //è presente nell'array delle bombe, se c'è lo chiama boom, else num (parametro che verrà sostituito dalla i del ciclo seguente)
             if(bombsArray.includes(i)){
                 cell.classList.add("bombs")
-                cell.innerText = "B"
-                bombsCheck += 1;
+                cell.innerText = "B" //debug per vedere sempre dove sono le bombe
+                // bombsCheck += 1; contatore di controllo in fase di sviluppo
             }
 
             else{
@@ -56,8 +56,6 @@ function startPlay(){
 
             return cell;
     }
-
-    if (safeNumbersToggled)
 
     for(i = 1; i <= chooseLevel; i++){
         let thisSquare = createSquare(i);
@@ -77,6 +75,10 @@ function startPlay(){
 
                 document.getElementById("resetBtn").classList.add("btn-outline-danger", "border", "border-4", "border-danger")
 
+                document.getElementById("main").style.pointerEvents = "none";
+                document.getElementById("playBtn").style.pointerEvents = "none";
+                document.getElementById("level").style.pointerEvents = "none";
+
             })
 
         }
@@ -90,7 +92,18 @@ function startPlay(){
                 safeNumbersToggled.push(this)
                 console.log(safeNumbersToggled.length);
                 document.getElementById("score").innerHTML = + safeNumbersToggled.length
-               
+                
+                if(safeNumbersToggled.length == chooseLevel - bombsArray.length){
+                    document.getElementById("lose").innerHTML = "You Win, Legend! Your score is: " + safeNumbersToggled.length
+
+                    document.getElementById("main").style.pointerEvents = "none";
+                    document.getElementById("playBtn").style.pointerEvents = "none";
+                    document.getElementById("level").style.pointerEvents = "none";
+                }
+                else{
+
+                }
+
             })
 
         }

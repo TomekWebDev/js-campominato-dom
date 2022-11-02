@@ -28,7 +28,7 @@
             <option value="81">Medium</option>
             <option value="49">Hard</option>
           </select>
-        <button class="btn btn-outline-secondary btn-sm" onclick="startPlay()" >Play</button>
+        <button id="playBtn" class="btn btn-outline-secondary btn-sm" onclick="startPlay()" >Play</button>
         <button id="resetBtn" class="btn btn-outline-secondary btn-sm" onclick="reset()" >Reset</button>
 
     </div>
@@ -44,7 +44,7 @@
     </div>
 
     <h2 id="lose" class="my-2">Your score is: <span id="score"></span></h2>
-    <h5><span id="missingToWin"></span>x numbers to win!</h5>
+    <h5 id="missing"><span id="missingToWin"></span>x numbers to win!</h5>
     
   </main>
 
