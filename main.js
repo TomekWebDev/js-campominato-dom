@@ -2,6 +2,8 @@ function startPlay(){
 
     let chooseLevel = document.getElementById("level").value
 
+    let totalBombs = 16;
+
     let gridContainer = document.getElementById("grid-container") //variabile per collegare il contenitore principale ai singoli div
 
     gridContainer.innerHTML = "";
@@ -14,7 +16,7 @@ function startPlay(){
                                 //(da usare per controllare quando terminare la partita se vinta, max num raggiunti)
 
     //ciclo while per creazione bombe uniche (numeri rnd unici)
-    while(bombsArray.length < 16){
+    while(bombsArray.length < totalBombs){
         let randomBombNumber = Math.round(Math.random()*(chooseLevel - 1)) + 1; //le bombe vengono create in un range tra 1 e il numero dei quadratini generati in base al level selezionato
         if(bombsArray.includes(randomBombNumber)){
         }
@@ -58,7 +60,7 @@ function startPlay(){
 
             thisSquare.addEventListener("click", 
             function activateSquare(){
-                console.log(this.innerText);
+                
                 this.classList.add("boom");
                 document.getElementById("lose").innerHTML = "You Lose :( Your score is: " + safeNumbersToggled.length
                 
@@ -81,9 +83,10 @@ function startPlay(){
             
             thisSquare.addEventListener("click", 
             function activateSquare(){
-                console.log(this.innerText);
+
                 this.classList.add("safe-number")
                 safeNumbersToggled.push(this)
+                this.style.pointerEvents = "none";
                 console.log(safeNumbersToggled.length);
                 document.getElementById("score").innerHTML = + safeNumbersToggled.length
                 
@@ -102,12 +105,10 @@ function startPlay(){
 
         }
 
-        console.log(thisSquare);
-
         gridContainer.append(thisSquare)
     }
 
-    console.log(bombsCheck);
+    // console.log(bombsCheck);
 
 }
 
